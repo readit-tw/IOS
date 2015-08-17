@@ -1,0 +1,13 @@
+.DS_Store
+
+#Exclude build settings
+build/*
+
+#Exclude user specific settings
+*.xcuserdatad
+xcuserdata
+*.xcuserdatad
+*.xcuserstate
+
+*.xccheckout
+*.pbxuser

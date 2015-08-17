@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<link rel="stylesheet" href="listResources.css" >
+
+<HTML>    
+<head>
+    <script type="text/javascript" src="knockout.js"></script>
+    <script type="text/javascript" src="listResource.js"></script>
+     <script type="text/javascript" src="resource.js"></script>
+</head>
+
+<body  onload='onLoad();'>
+<div class="iosTableView">
+
+<table>
+    <thead>
+    </thead>
+    <tbody data-bind="foreach: resources">
+        <tr>
+            <td data-bind="text: title"></td>
+<!--            <td data-bind="text: link"></td>-->
+        </tr>
+    </tbody>
+    
+</table>
+</div>
+
+
+</body>
+</HTML>

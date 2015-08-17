@@ -1,0 +1,31 @@
+
+input[type="text"]
+{
+    border : 0;
+    height: 44px;
+    width: 80%;
+    font-size: 16px;
+    margin-bottom: 1px;
+    -webkit-appearance: none;
+    background: #fff;
+/*    border-bottom: 1px solid #c0c0c0;*/
+
+}
+
+.iosTableView table tr td{
+    height: 44px;
+    width: 425px;
+    font-size: 16px;
+    margin-bottom: 1px;
+    -webkit-appearance: none;
+    background: #fff;
+    border-bottom: 1px solid #c0c0c0;
+    /* border-radius: 2px; */
+    
+}
+
+
+h1 {
+    color: orange;
+    text-align: center;
+}
