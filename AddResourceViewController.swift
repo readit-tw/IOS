@@ -22,14 +22,13 @@ class AddResourceViewController :	UIViewController {
         super.viewDidAppear(animated)
         
         
-       // self.navigationController?.navigationBar.topItem?.title = "ReadIt"
+       self.navigationController?.navigationBar.topItem?.title = "Add Resource"
         
         var resourceListHTML = NSBundle.mainBundle().pathForResource("AddResource", ofType: "html")
         var contentString = NSString(contentsOfFile: resourceListHTML!, encoding: NSUTF8StringEncoding, error:nil);
         var url = NSURL(fileURLWithPath:resourceListHTML!)
         
         var request = NSURLRequest(URL: url!)
-        //self.resourceWebView.loadRequest(request)
         webView.loadHTMLString(contentString! as String, baseURL: url!)
         
     }
