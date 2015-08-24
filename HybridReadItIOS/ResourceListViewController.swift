@@ -11,7 +11,6 @@ import WebKit
 class ResourceListViewController: UIViewController {
 
     
-    var resources = [ReadResource]()
     @IBOutlet weak var resourceWebView: UIWebView!
     var jsonResources = NSArray()
     
@@ -24,9 +23,8 @@ class ResourceListViewController: UIViewController {
          var contentString = NSString(contentsOfFile: resourceListHTML!, encoding: NSUTF8StringEncoding, error:nil);
          var url = NSURL(fileURLWithPath:resourceListHTML!)
         
-        var request = NSURLRequest(URL: url!)
-        //self.resourceWebView.loadRequest(request)
-        resourceWebView.loadHTMLString(contentString! as String, baseURL: url!)
+         var request = NSURLRequest(URL: url!)
+         resourceWebView.loadHTMLString(contentString! as String, baseURL: url!)
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -38,7 +36,6 @@ class ResourceListViewController: UIViewController {
     
     
     override func viewWillAppear(animated: Bool) {
-        
         loadResources();
     }
     
@@ -52,12 +49,9 @@ class ResourceListViewController: UIViewController {
     
     func loadResources()
     {
-        
-        resources.removeAll();
         let urlString = "http://readit.thoughtworks.com/resources"
         let url = NSURL(string: urlString);
         let request = NSURLRequest(URL: url!);
-        //request.timeoutInterval(NSTimeInterval.)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response, data, error) -> Void in
@@ -65,28 +59,8 @@ class ResourceListViewController: UIViewController {
             if data != nil  {
                 
                 if let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
-                    
                     self.jsonResources = jsonResult
                     self.resourceWebView.reload();
-
-                    //println(self.jsonResources)
-                    /*for dictionary in jsonResult {
-                        
-                        let title = dictionary["title"] as? String
-                        var link  = (dictionary["link"] as? String)!.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil);
-                        
-                        let escapeUrl = link.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-                        let linkUrl  = NSURL(string:escapeUrl!)!
-                        
-                        if title != nil && linkUrl.absoluteString != nil
-                        {
-                            let resource : ReadResource = ReadResource(title: title!, link: linkUrl)
-                            self.resources.append(resource);
-                        }
-                    }*/
-                    
-                    
-                    
                 }
                 
             }
@@ -109,16 +83,10 @@ extension ResourceListViewController : UIWebViewDelegate {
 
     func webViewDidFinishLoad(webView: UIWebView){
         
-        var data = NSJSONSerialization.dataWithJSONObject(self.jsonResources, options: nil, error: nil)
+        var data =  NSJSONSerialization.dataWithJSONObject(self.jsonResources, options: nil, error: nil)
         let string = NSString(data: data!, encoding: NSUTF8StringEncoding)as! String
-        
         let function = "loadResourceJSon" + "(" + string + ")"
-
         let response = self.resourceWebView.stringByEvaluatingJavaScriptFromString(function);
-        if let result = response {
-            print(result);
-        }
-        
     }
 }
 

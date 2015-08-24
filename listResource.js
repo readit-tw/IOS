@@ -11,6 +11,7 @@ var onLoad = function() {
     loadResourceJSon = function(resJSON){
         dataFromServer = ko.utils.parseJson(JSON.stringify(resJSON))
         update()
+        //return dataFromServer
     }
     
     update = function(){
