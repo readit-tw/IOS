@@ -1,7 +1,15 @@
 
 
 var viewModel = {
-    resources: ko.observableArray([])
+    
+  resources:ko.observableArray([]),
+  onClick :  function(resource){
+      
+      var scheme = "openUrl://1?Readit=" + resource.link()
+      window.open(scheme)
+        
+    }
+    
 };
 
 var onLoad = function() {
@@ -11,7 +19,6 @@ var onLoad = function() {
     loadResourceJSon = function(resJSON){
         dataFromServer = ko.utils.parseJson(JSON.stringify(resJSON))
         update()
-        //return dataFromServer
     }
     
     update = function(){
@@ -22,8 +29,11 @@ var onLoad = function() {
         viewModel.resources(mappedData);
         viewModel.mappedData = mappedData
         ko.applyBindings(viewModel);
-        
     }
+
+
     
 };
+
+
 

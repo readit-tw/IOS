@@ -88,6 +88,25 @@ extension ResourceListViewController : UIWebViewDelegate {
         let function = "loadResourceJSon" + "(" + string + ")"
         let response = self.resourceWebView.stringByEvaluatingJavaScriptFromString(function);
     }
+    
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool{
+        
+       if (request.URL?.scheme! == "openurl")
+       {
+            var detailViewController  = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        
+                let query =  request.URL?.query
+                if let value = query?.componentsSeparatedByString("=")[1] {
+                    println(value)
+                    detailViewController.url = NSURL(string: value)
+                    self.navigationController?.pushViewController(detailViewController, animated: true)
+            }
+        
+        }
+        return true;
+    }
+    
+
 }
 
 

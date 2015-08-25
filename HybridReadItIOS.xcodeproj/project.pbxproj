@@ -15,7 +15,6 @@
 		0E581F971B7B5FB20065B72B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E581F961B7B5FB20065B72B /* AppDelegate.swift */; };
 		0E581F991B7B5FB20065B72B /* ResourceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E581F981B7B5FB20065B72B /* ResourceListViewController.swift */; };
 		0E581F9C1B7B5FB20065B72B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E581F9A1B7B5FB20065B72B /* Main.storyboard */; };
-		0E581F9E1B7B5FB20065B72B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E581F9D1B7B5FB20065B72B /* Images.xcassets */; };
 		0E581FA11B7B5FB20065B72B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E581F9F1B7B5FB20065B72B /* LaunchScreen.xib */; };
 		0E581FAD1B7B5FB20065B72B /* HybridReadItIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E581FAC1B7B5FB20065B72B /* HybridReadItIOSTests.swift */; };
 		0E581FB71B7B61020065B72B /* ReadResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E581FB61B7B61020065B72B /* ReadResource.swift */; };
@@ -23,6 +22,13 @@
 		0E581FBF1B7B656B0065B72B /* listResources.css in Resources */ = {isa = PBXBuildFile; fileRef = 0E581FBE1B7B656B0065B72B /* listResources.css */; };
 		0E581FC21B7B73F40065B72B /* listResource.js in Resources */ = {isa = PBXBuildFile; fileRef = 0E581FC11B7B73F40065B72B /* listResource.js */; };
 		0E581FC41B7B74A10065B72B /* knockout.js in Resources */ = {isa = PBXBuildFile; fileRef = 0E581FC31B7B74A10065B72B /* knockout.js */; };
+		0ECD363E1B8B039B0076589B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD363D1B8B039B0076589B /* Images.xcassets */; };
+		0ECD36401B8B0FE90076589B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD363F1B8B0FE90076589B /* DetailViewController.swift */; };
+		0ECD364A1B8B2BC90076589B /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD36491B8B2BC90076589B /* ShareViewController.swift */; };
+		0ECD364C1B8B2BC90076589B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD364B1B8B2BC90076589B /* MainInterface.storyboard */; };
+		0ECD364F1B8B2BC90076589B /* ReadIt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0ECD36451B8B2BC90076589B /* ReadIt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0ECD36571B8C6F740076589B /* materialize.css in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD36561B8C6F740076589B /* materialize.css */; };
+		0ECD36591B8C6FF00076589B /* materialize.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD36581B8C6FF00076589B /* materialize.min.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +39,28 @@
 			remoteGlobalIDString = 0E581F901B7B5FB20065B72B;
 			remoteInfo = HybridReadItIOS;
 		};
+		0ECD364D1B8B2BC90076589B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E581F891B7B5FB20065B72B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0ECD36441B8B2BC90076589B;
+			remoteInfo = ReadIt;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0ECD36531B8B2BC90076589B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0ECD364F1B8B2BC90076589B /* ReadIt.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E54F2871B81A03000BC351D /* AddResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddResourceViewController.swift; path = ../AddResourceViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +73,6 @@
 		0E581F961B7B5FB20065B72B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E581F981B7B5FB20065B72B /* ResourceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceListViewController.swift; sourceTree = "<group>"; };
 		0E581F9B1B7B5FB20065B72B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0E581F9D1B7B5FB20065B72B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0E581FA01B7B5FB20065B72B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0E581FA61B7B5FB20065B72B /* HybridReadItIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HybridReadItIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E581FAB1B7B5FB20065B72B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +82,14 @@
 		0E581FBE1B7B656B0065B72B /* listResources.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = listResources.css; sourceTree = "<group>"; };
 		0E581FC11B7B73F40065B72B /* listResource.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = listResource.js; sourceTree = "<group>"; };
 		0E581FC31B7B74A10065B72B /* knockout.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = knockout.js; sourceTree = "<group>"; };
+		0ECD363D1B8B039B0076589B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0ECD363F1B8B0FE90076589B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0ECD36451B8B2BC90076589B /* ReadIt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ReadIt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0ECD36481B8B2BC90076589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0ECD36491B8B2BC90076589B /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		0ECD364B1B8B2BC90076589B /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		0ECD36561B8C6F740076589B /* materialize.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = materialize.css; path = "../../ReadIt-Android/androidHybrid/app/src/main/assets/www/css/materialize.css"; sourceTree = "<group>"; };
+		0ECD36581B8C6FF00076589B /* materialize.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = materialize.min.js; path = "../../ReadIt-Android/androidHybrid/app/src/main/assets/www/js/materialize.min.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +107,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0ECD36421B8B2BC90076589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -82,6 +123,7 @@
 				0E581FB81B7B61690065B72B /* Resources */,
 				0E581F931B7B5FB20065B72B /* HybridReadItIOS */,
 				0E581FA91B7B5FB20065B72B /* HybridReadItIOSTests */,
+				0ECD36461B8B2BC90076589B /* ReadIt */,
 				0E581F921B7B5FB20065B72B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,6 +133,7 @@
 			children = (
 				0E581F911B7B5FB20065B72B /* HybridReadItIOS.app */,
 				0E581FA61B7B5FB20065B72B /* HybridReadItIOSTests.xctest */,
+				0ECD36451B8B2BC90076589B /* ReadIt.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,14 +141,15 @@
 		0E581F931B7B5FB20065B72B /* HybridReadItIOS */ = {
 			isa = PBXGroup;
 			children = (
+				0ECD363D1B8B039B0076589B /* Images.xcassets */,
 				0E54F2871B81A03000BC351D /* AddResourceViewController.swift */,
 				0E581F961B7B5FB20065B72B /* AppDelegate.swift */,
 				0E581FB61B7B61020065B72B /* ReadResource.swift */,
 				0E581F981B7B5FB20065B72B /* ResourceListViewController.swift */,
 				0E581F9A1B7B5FB20065B72B /* Main.storyboard */,
-				0E581F9D1B7B5FB20065B72B /* Images.xcassets */,
 				0E581F9F1B7B5FB20065B72B /* LaunchScreen.xib */,
 				0E581F941B7B5FB20065B72B /* Supporting Files */,
+				0ECD363F1B8B0FE90076589B /* DetailViewController.swift */,
 			);
 			path = HybridReadItIOS;
 			sourceTree = "<group>";
@@ -157,6 +201,7 @@
 		0E581FBB1B7B61AB0065B72B /* CSS */ = {
 			isa = PBXGroup;
 			children = (
+				0ECD36561B8C6F740076589B /* materialize.css */,
 				0E581FBE1B7B656B0065B72B /* listResources.css */,
 				0E54F28B1B81ADB600BC351D /* AddResource.css */,
 			);
@@ -166,12 +211,31 @@
 		0E581FC01B7B73E40065B72B /* JS */ = {
 			isa = PBXGroup;
 			children = (
+				0ECD36581B8C6FF00076589B /* materialize.min.js */,
 				0E581FC31B7B74A10065B72B /* knockout.js */,
 				0E581FC11B7B73F40065B72B /* listResource.js */,
 				0E54F28F1B81C62300BC351D /* addResource.js */,
 				0E54F2911B81C65D00BC351D /* resource.js */,
 			);
 			name = JS;
+			sourceTree = "<group>";
+		};
+		0ECD36461B8B2BC90076589B /* ReadIt */ = {
+			isa = PBXGroup;
+			children = (
+				0ECD36491B8B2BC90076589B /* ShareViewController.swift */,
+				0ECD364B1B8B2BC90076589B /* MainInterface.storyboard */,
+				0ECD36471B8B2BC90076589B /* Supporting Files */,
+			);
+			path = ReadIt;
+			sourceTree = "<group>";
+		};
+		0ECD36471B8B2BC90076589B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0ECD36481B8B2BC90076589B /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,10 +248,12 @@
 				0E581F8D1B7B5FB20065B72B /* Sources */,
 				0E581F8E1B7B5FB20065B72B /* Frameworks */,
 				0E581F8F1B7B5FB20065B72B /* Resources */,
+				0ECD36531B8B2BC90076589B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0ECD364E1B8B2BC90076589B /* PBXTargetDependency */,
 			);
 			name = HybridReadItIOS;
 			productName = HybridReadItIOS;
@@ -212,6 +278,23 @@
 			productReference = 0E581FA61B7B5FB20065B72B /* HybridReadItIOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0ECD36441B8B2BC90076589B /* ReadIt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0ECD36501B8B2BC90076589B /* Build configuration list for PBXNativeTarget "ReadIt" */;
+			buildPhases = (
+				0ECD36411B8B2BC90076589B /* Sources */,
+				0ECD36421B8B2BC90076589B /* Frameworks */,
+				0ECD36431B8B2BC90076589B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReadIt;
+			productName = ReadIt;
+			productReference = 0ECD36451B8B2BC90076589B /* ReadIt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -227,6 +310,9 @@
 					0E581FA51B7B5FB20065B72B = {
 						CreatedOnToolsVersion = 6.3.2;
 						TestTargetID = 0E581F901B7B5FB20065B72B;
+					};
+					0ECD36441B8B2BC90076589B = {
+						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
 			};
@@ -245,6 +331,7 @@
 			targets = (
 				0E581F901B7B5FB20065B72B /* HybridReadItIOS */,
 				0E581FA51B7B5FB20065B72B /* HybridReadItIOSTests */,
+				0ECD36441B8B2BC90076589B /* ReadIt */,
 			);
 		};
 /* End PBXProject section */
@@ -256,14 +343,16 @@
 			files = (
 				0E581FC21B7B73F40065B72B /* listResource.js in Resources */,
 				0E54F2921B81C65D00BC351D /* resource.js in Resources */,
+				0ECD36571B8C6F740076589B /* materialize.css in Resources */,
 				0E581FBD1B7B633D0065B72B /* listResources.html in Resources */,
 				0E54F2901B81C62300BC351D /* addResource.js in Resources */,
+				0ECD363E1B8B039B0076589B /* Images.xcassets in Resources */,
 				0E581FC41B7B74A10065B72B /* knockout.js in Resources */,
 				0E581FBF1B7B656B0065B72B /* listResources.css in Resources */,
 				0E54F28A1B81A3AE00BC351D /* AddResource.html in Resources */,
+				0ECD36591B8C6FF00076589B /* materialize.min.js in Resources */,
 				0E581F9C1B7B5FB20065B72B /* Main.storyboard in Resources */,
 				0E581FA11B7B5FB20065B72B /* LaunchScreen.xib in Resources */,
-				0E581F9E1B7B5FB20065B72B /* Images.xcassets in Resources */,
 				0E54F28C1B81ADB600BC351D /* AddResource.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +361,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0ECD36431B8B2BC90076589B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0ECD364C1B8B2BC90076589B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +381,7 @@
 			files = (
 				0E581F991B7B5FB20065B72B /* ResourceListViewController.swift in Sources */,
 				0E581F971B7B5FB20065B72B /* AppDelegate.swift in Sources */,
+				0ECD36401B8B0FE90076589B /* DetailViewController.swift in Sources */,
 				0E54F2881B81A03000BC351D /* AddResourceViewController.swift in Sources */,
 				0E581FB71B7B61020065B72B /* ReadResource.swift in Sources */,
 			);
@@ -297,6 +395,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0ECD36411B8B2BC90076589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0ECD364A1B8B2BC90076589B /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -304,6 +410,11 @@
 			isa = PBXTargetDependency;
 			target = 0E581F901B7B5FB20065B72B /* HybridReadItIOS */;
 			targetProxy = 0E581FA71B7B5FB20065B72B /* PBXContainerItemProxy */;
+		};
+		0ECD364E1B8B2BC90076589B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0ECD36441B8B2BC90076589B /* ReadIt */;
+			targetProxy = 0ECD364D1B8B2BC90076589B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -464,6 +575,30 @@
 			};
 			name = Release;
 		};
+		0ECD36511B8B2BC90076589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ReadIt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0ECD36521B8B2BC90076589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ReadIt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -493,6 +628,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		0ECD36501B8B2BC90076589B /* Build configuration list for PBXNativeTarget "ReadIt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0ECD36511B8B2BC90076589B /* Debug */,
+				0ECD36521B8B2BC90076589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
