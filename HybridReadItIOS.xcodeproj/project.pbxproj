@@ -22,6 +22,12 @@
 		0E581FBF1B7B656B0065B72B /* listResources.css in Resources */ = {isa = PBXBuildFile; fileRef = 0E581FBE1B7B656B0065B72B /* listResources.css */; };
 		0E581FC21B7B73F40065B72B /* listResource.js in Resources */ = {isa = PBXBuildFile; fileRef = 0E581FC11B7B73F40065B72B /* listResource.js */; };
 		0E581FC41B7B74A10065B72B /* knockout.js in Resources */ = {isa = PBXBuildFile; fileRef = 0E581FC31B7B74A10065B72B /* knockout.js */; };
+		0E999F6D1B8DE0E600D64876 /* addResource.js in Sources */ = {isa = PBXBuildFile; fileRef = 0E54F28F1B81C62300BC351D /* addResource.js */; };
+		0E999F6E1B8DE0F000D64876 /* AddResource.css in Sources */ = {isa = PBXBuildFile; fileRef = 0E54F28B1B81ADB600BC351D /* AddResource.css */; };
+		0E999F6F1B8DE0FB00D64876 /* AddResource.html in Sources */ = {isa = PBXBuildFile; fileRef = 0E54F2891B81A3AE00BC351D /* AddResource.html */; };
+		0E999F701B8DE18D00D64876 /* resource.js in Resources */ = {isa = PBXBuildFile; fileRef = 0E54F2911B81C65D00BC351D /* resource.js */; };
+		0E999F711B8DE8D000D64876 /* AddResource.css in Resources */ = {isa = PBXBuildFile; fileRef = 0E54F28B1B81ADB600BC351D /* AddResource.css */; };
+		0E999F721B8DE8D000D64876 /* AddResource.html in Resources */ = {isa = PBXBuildFile; fileRef = 0E54F2891B81A3AE00BC351D /* AddResource.html */; };
 		0ECD363E1B8B039B0076589B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ECD363D1B8B039B0076589B /* Images.xcassets */; };
 		0ECD36401B8B0FE90076589B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD363F1B8B0FE90076589B /* DetailViewController.swift */; };
 		0ECD364A1B8B2BC90076589B /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECD36491B8B2BC90076589B /* ShareViewController.swift */; };
@@ -384,6 +390,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E999F711B8DE8D000D64876 /* AddResource.css in Resources */,
+				0E999F721B8DE8D000D64876 /* AddResource.html in Resources */,
+				0E999F701B8DE18D00D64876 /* resource.js in Resources */,
 				0ECD364C1B8B2BC90076589B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +424,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E999F6F1B8DE0FB00D64876 /* AddResource.html in Sources */,
+				0E999F6E1B8DE0F000D64876 /* AddResource.css in Sources */,
+				0E999F6D1B8DE0E600D64876 /* addResource.js in Sources */,
 				0ECD364A1B8B2BC90076589B /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +680,7 @@
 				0ECD36521B8B2BC90076589B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -14,37 +14,44 @@ class ShareViewController:SLComposeServiceViewController {
     
     var linkTitle : String!
     var link : String!
-    //var userDefault : AnyObject
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+       
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+      super.viewDidAppear(animated)
+        
+    }
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
     }
     
     override func presentationAnimationDidFinish() {
-        
-        
         var item : NSExtensionItem = self.extensionContext?.inputItems[0] as! NSExtensionItem
         var itemProvider : NSItemProvider = item.attachments?[0] as! NSItemProvider
         var contentType = kUTTypeURL as NSString
         for attachment in item.attachments  as! [NSItemProvider] {
             if attachment.hasItemConformingToTypeIdentifier(contentType as String){
-               
+                
                 itemProvider.loadItemForTypeIdentifier("public.url", options:nil) { urlItem, error in
                     
                     var url : NSURL = urlItem as! NSURL
                     self.linkTitle = self.textView.text
                     self.link = url.absoluteString
-                    println("\( self.linkTitle),\(self.link)")
                 }
                 
-
+                
             }
         }
+        
         
     }
     
@@ -67,7 +74,7 @@ class ShareViewController:SLComposeServiceViewController {
         let task = session.dataTaskWithRequest(request)
         task.resume()
         
-        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+        self.extensionContext!.completeRequestReturningItems([], completionHandler:nil)
         
     }
     

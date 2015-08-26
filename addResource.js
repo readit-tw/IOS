@@ -9,7 +9,6 @@ var onLoad = function (){
     getResource = function(){
         
         return ko.toJSON(res)
-        
     }
     clearAll = function() {
         res.title("")
