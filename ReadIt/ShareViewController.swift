@@ -9,49 +9,71 @@
 import UIKit
 import Social
 import MobileCoreServices
-class ShareViewController: SLComposeServiceViewController {
 
+class ShareViewController:SLComposeServiceViewController {
+    
     var linkTitle : String!
     var link : String!
-    
+    //var userDefault : AnyObject
     
     override func viewDidLoad() {
-        //self.textView.text
-        
-        
-        var item : NSExtensionItem = self.extensionContext?.inputItems[0] as! NSExtensionItem
-        var itemProvider : NSItemProvider = item.attachments?[0] as! NSItemProvider
-        
-        itemProvider.loadItemForTypeIdentifier("public.url", options:nil) { urlItem, error in
-            var url : NSURL = urlItem as! NSURL
-            self.linkTitle = self.textView.text
-            self.link = url.absoluteString
-            println(itemProvider)
-            self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
-            
-        }
-        
+        super.viewDidLoad()
     }
     
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
     }
-
-    override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
     
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
+    override func presentationAnimationDidFinish() {
         
         
-        
-        
+        var item : NSExtensionItem = self.extensionContext?.inputItems[0] as! NSExtensionItem
+        var itemProvider : NSItemProvider = item.attachments?[0] as! NSItemProvider
+        var contentType = kUTTypeURL as NSString
+        for attachment in item.attachments  as! [NSItemProvider] {
+            if attachment.hasItemConformingToTypeIdentifier(contentType as String){
+               
+                itemProvider.loadItemForTypeIdentifier("public.url", options:nil) { urlItem, error in
+                    
+                    var url : NSURL = urlItem as! NSURL
+                    self.linkTitle = self.textView.text
+                    self.link = url.absoluteString
+                    println("\( self.linkTitle),\(self.link)")
+                }
+                
+
+            }
+        }
         
     }
-
+    
+    override func didSelectPost() {
+        
+        var err : NSError?
+        var dictionary : Dictionary = [ "title":self.linkTitle!, "link":self.link! ]
+        var userDefault = NSUserDefaults(suiteName:"group.IFReaderIdentifier")
+        
+        let configuration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("group.IFReaderIdentifier")
+        configuration.sharedContainerIdentifier = "group.IFReaderIdentifier"
+        let session =  NSURLSession(configuration: configuration, delegate: nil, delegateQueue: nil)
+        var urlString = "http://readit.thoughtworks.com/resources"
+        var request = NSMutableURLRequest(URL:NSURL(string:urlString)!)
+        request.HTTPMethod = "POST"
+        
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(dictionary, options: nil, error: &err)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = session.dataTaskWithRequest(request)
+        task.resume()
+        
+        self.extensionContext!.completeRequestReturningItems([], completionHandler: nil)
+        
+    }
+    
     override func configurationItems() -> [AnyObject]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         return []
     }
-
+    
 }

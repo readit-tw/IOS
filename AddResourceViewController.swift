@@ -21,7 +21,7 @@ class AddResourceViewController :	UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        
+        println("Hi")
        self.navigationController?.navigationBar.topItem?.title = "Add Resource"
         
         var resourceListHTML = NSBundle.mainBundle().pathForResource("AddResource", ofType: "html")

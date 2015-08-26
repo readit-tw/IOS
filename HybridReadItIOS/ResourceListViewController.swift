@@ -18,6 +18,7 @@ class ResourceListViewController: UIViewController {
         super.viewDidLoad()
         
          self.navigationController?.navigationBar.topItem?.title = "ReadIt"
+         self.navigationController?.navigationBar.tintColor = UIColor.blueColor();
         
          var resourceListHTML = NSBundle.mainBundle().pathForResource("listResources", ofType: "html")
          var contentString = NSString(contentsOfFile: resourceListHTML!, encoding: NSUTF8StringEncoding, error:nil);
