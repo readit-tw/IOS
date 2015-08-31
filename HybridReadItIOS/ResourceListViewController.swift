@@ -82,7 +82,8 @@ class ResourceListViewController: UIViewController{
     func loadResources(urlString: String)
     {
         self.jsonResources = NSArray()
-        let url = NSURL(string: urlString);
+        var escapedString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        let url = NSURL(string: escapedString!);
         let request = NSURLRequest(URL: url!);
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
@@ -177,9 +178,11 @@ extension ResourceListViewController : UISearchBarDelegate{
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        var urlString = "http://readit.thoughtworks.com/resources/" + searchText
-        println(urlString)
-        loadResources(urlString);
+       var filteredArray = jsonResources.filteredArrayUsingPredicate( NSPredicate(format: "title contains[c] %@ OR tag contains[c] %@",searchText,searchText))
+        if filteredArray != jsonResources {
+            var urlString = "http://readit.thoughtworks.com/resources/" + searchText
+            loadResources(urlString);
+        }
         
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
