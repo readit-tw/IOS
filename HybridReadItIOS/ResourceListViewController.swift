@@ -8,26 +8,54 @@
 
 import UIKit
 import WebKit
-class ResourceListViewController: UIViewController {
+import JavaScriptCore
+
+
+@objc protocol ListViewProtocol : JSExport{
+    
+    func onItemClick(string:String);
+    
+}
+
+@objc class ListViewClass : NSObject, ListViewProtocol{
+    
+    func onItemClick(string:String){
+       let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var detailViewController  = mainStoryboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+       detailViewController.url = NSURL(string: string)
+       var vc = UIApplication.sharedApplication().keyWindow?.rootViewController! as! UINavigationController?
+      if let mainVc = vc {
+            mainVc.pushViewController(detailViewController, animated: true)
+        }
+    
+    }
+}
+
+class ResourceListViewController: UIViewController{
 
     
     @IBOutlet weak var resourceWebView: UIWebView!
     var jsonResources = NSArray()
+    var context = JSContext()
     
+    @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.navigationController?.navigationBar.topItem?.title = "ReadIt"
-         self.navigationController?.navigationBar.tintColor = UIColor.blueColor();
+        self.navigationController?.navigationBar.topItem?.title = "ReadIt"
+        self.navigationController?.navigationBar.barTintColor = UIColor(red:242/255.0, green: 96/255.0, blue: 146/255.0, alpha: 1)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-         var resourceListHTML = NSBundle.mainBundle().pathForResource("listResources", ofType: "html")
-         var contentString = NSString(contentsOfFile: resourceListHTML!, encoding: NSUTF8StringEncoding, error:nil);
-         var url = NSURL(fileURLWithPath:resourceListHTML!)
+        searchBar.barTintColor = UIColor(red:242/255.0, green: 96/255.0, blue: 146/255.0, alpha: 0.7)
+        var resourceListHTML = NSBundle.mainBundle().pathForResource("resourceList", ofType: "html", inDirectory: "www")
+        var contentString = NSString(contentsOfFile: resourceListHTML!, encoding: NSUTF8StringEncoding, error:nil);
+        var url = NSURL(fileURLWithPath:resourceListHTML!)
         
-         var request = NSURLRequest(URL: url!)
-         resourceWebView.loadHTMLString(contentString! as String, baseURL: url!)
+        var request = NSURLRequest(URL: url!)
+        resourceWebView.loadHTMLString(contentString! as String, baseURL: url!)
         
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +65,8 @@ class ResourceListViewController: UIViewController {
     
     
     override func viewWillAppear(animated: Bool) {
-        loadResources();
+        let urlString = "http://readit.thoughtworks.com/resources"
+        loadResources(urlString);
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -48,9 +77,8 @@ class ResourceListViewController: UIViewController {
         
     }
     
-    func loadResources()
+    func loadResources(urlString: String)
     {
-        let urlString = "http://readit.thoughtworks.com/resources"
         let url = NSURL(string: urlString);
         let request = NSURLRequest(URL: url!);
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -86,8 +114,17 @@ extension ResourceListViewController : UIWebViewDelegate {
         
         var data =  NSJSONSerialization.dataWithJSONObject(self.jsonResources, options: nil, error: nil)
         let string = NSString(data: data!, encoding: NSUTF8StringEncoding)as! String
-        let function = "loadResourceJSon" + "(" + string + ")"
+        let function = "onListLoad" + "(" + string + ")"
+        //let function = "loadResources" + "(" + string + ")"
+       
         let response = self.resourceWebView.stringByEvaluatingJavaScriptFromString(function);
+        
+        
+        
+        
+        context  = webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext; // Undocumented access to UIWebView's JSContext
+         context.setObject(ListViewClass() , forKeyedSubscript: "ListView" )
+        //self.context("ListView") = ListViewClass();
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool{
@@ -96,9 +133,9 @@ extension ResourceListViewController : UIWebViewDelegate {
        {
             var detailViewController  = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         
+                
                 let query =  request.URL?.query
                 if let value = query?.componentsSeparatedByString("=")[1] {
-                    println(value)
                     detailViewController.url = NSURL(string: value)
                     self.navigationController?.pushViewController(detailViewController, animated: true)
             }
@@ -109,6 +146,28 @@ extension ResourceListViewController : UIWebViewDelegate {
     
 
 }
+
+extension ResourceListViewController : UISearchBarDelegate{
+    
+     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        
+         var urlString = "http://readit.thoughtworks.com/resources" + searchBar.text
+         loadResources(urlString);
+        
+    }
+    
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar){
+        println(searchBar.text)
+        var urlString = "http://readit.thoughtworks.com/resources"
+        loadResources(urlString);
+    }
+
+}
+
+
+
+
 
 
 

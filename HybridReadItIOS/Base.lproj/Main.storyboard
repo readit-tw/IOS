@@ -17,8 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="PHO-GJ-oOB">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wEs-Wg-10f">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qeA-PJ-ThB"/>
+                                </connections>
+                            </searchBar>
+                            <webView contentMode="scaleAspectFit" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PHO-GJ-oOB">
+                                <rect key="frame" x="0.0" y="108" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="AKY-UT-vS0"/>
@@ -31,7 +38,11 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PHO-GJ-oOB" secondAttribute="bottom" id="9gf-xX-x3g"/>
                             <constraint firstAttribute="centerX" secondItem="PHO-GJ-oOB" secondAttribute="centerX" id="HE9-5g-XNi"/>
                             <constraint firstItem="PHO-GJ-oOB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MsK-jS-pJz"/>
-                            <constraint firstItem="PHO-GJ-oOB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="cpv-bp-VTE"/>
+                            <constraint firstAttribute="trailing" secondItem="wEs-Wg-10f" secondAttribute="trailing" id="SbI-Uq-hc3"/>
+                            <constraint firstItem="wEs-Wg-10f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="T0K-fV-Q4g"/>
+                            <constraint firstItem="PHO-GJ-oOB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="108" id="cpv-bp-VTE"/>
+                            <constraint firstItem="PHO-GJ-oOB" firstAttribute="top" secondItem="wEs-Wg-10f" secondAttribute="bottom" id="jBq-E6-j4R"/>
+                            <constraint firstItem="wEs-Wg-10f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mBe-rS-to1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KFX-aU-fk5">
@@ -43,9 +54,19 @@
                     </navigationItem>
                     <connections>
                         <outlet property="resourceWebView" destination="PHO-GJ-oOB" id="fiW-Pn-9Wu"/>
+                        <outlet property="searchBar" destination="wEs-Wg-10f" id="ods-8G-bBX"/>
+                        <outlet property="searchDisplayController" destination="bzN-6C-vZe" id="lk9-ok-EyA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="bzN-6C-vZe">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="n6U-U3-dtc"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="Gdx-zl-LFx"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="f07-dh-QCs"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="M9f-qO-paZ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="969" y="356"/>
         </scene>
@@ -183,4 +204,5 @@
             <point key="canvasLocation" x="2902" y="1226"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
 </document>

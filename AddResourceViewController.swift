@@ -21,10 +21,9 @@ class AddResourceViewController :	UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        println("Hi")
-       self.navigationController?.navigationBar.topItem?.title = "Add Resource"
+        self.navigationController?.navigationBar.topItem?.title = "Add Resource"
         
-        var resourceListHTML = NSBundle.mainBundle().pathForResource("AddResource", ofType: "html")
+        var resourceListHTML = NSBundle.mainBundle().pathForResource("addResource", ofType: "html", inDirectory: "www")
         var contentString = NSString(contentsOfFile: resourceListHTML!, encoding: NSUTF8StringEncoding, error:nil);
         var url = NSURL(fileURLWithPath:resourceListHTML!)
         

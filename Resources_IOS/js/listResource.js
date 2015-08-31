@@ -31,6 +31,8 @@ var onLoad = function() {
         ko.applyBindings(viewModel);
     }
 
+    
+
 
     
 };
