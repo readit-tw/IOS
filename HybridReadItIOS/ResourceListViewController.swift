@@ -20,28 +20,29 @@ import JavaScriptCore
 @objc class ListViewClass : NSObject, ListViewProtocol{
     
     func onItemClick(string:String){
-       let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var detailViewController  = mainStoryboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-       detailViewController.url = NSURL(string: string)
-       var vc = UIApplication.sharedApplication().keyWindow?.rootViewController! as! UINavigationController?
-      if let mainVc = vc {
+        detailViewController.url = NSURL(string: string)
+        var vc = UIApplication.sharedApplication().keyWindow?.rootViewController! as! UINavigationController?
+        if let mainVc = vc {
             mainVc.pushViewController(detailViewController, animated: true)
         }
-    
+        
     }
 }
 
 class ResourceListViewController: UIViewController{
-
+    
     
     @IBOutlet weak var resourceWebView: UIWebView!
     var jsonResources = NSArray()
     var context = JSContext()
-    
     @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.searchBar.delegate = self;
         self.navigationController?.navigationBar.topItem?.title = "ReadIt"
         self.navigationController?.navigationBar.barTintColor = UIColor(red:242/255.0, green: 96/255.0, blue: 146/255.0, alpha: 1)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -57,7 +58,7 @@ class ResourceListViewController: UIViewController{
         // Do any additional setup after loading the view, typically from a nib.
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,6 +68,7 @@ class ResourceListViewController: UIViewController{
     override func viewWillAppear(animated: Bool) {
         let urlString = "http://readit.thoughtworks.com/resources"
         loadResources(urlString);
+        searchBar.text = ""
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -79,6 +81,7 @@ class ResourceListViewController: UIViewController{
     
     func loadResources(urlString: String)
     {
+        self.jsonResources = NSArray()
         let url = NSURL(string: urlString);
         let request = NSURLRequest(URL: url!);
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -89,7 +92,6 @@ class ResourceListViewController: UIViewController{
                 
                 if let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as? NSArray {
                     self.jsonResources = jsonResult
-                    self.resourceWebView.reload();
                 }
                 
             }
@@ -102,6 +104,7 @@ class ResourceListViewController: UIViewController{
             
         }
         
+        self.resourceWebView.reload();
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         
     }
@@ -109,60 +112,81 @@ class ResourceListViewController: UIViewController{
 }
 
 extension ResourceListViewController : UIWebViewDelegate {
-
+    
     func webViewDidFinishLoad(webView: UIWebView){
         
         var data =  NSJSONSerialization.dataWithJSONObject(self.jsonResources, options: nil, error: nil)
         let string = NSString(data: data!, encoding: NSUTF8StringEncoding)as! String
         let function = "onListLoad" + "(" + string + ")"
         //let function = "loadResources" + "(" + string + ")"
-       
+        
         let response = self.resourceWebView.stringByEvaluatingJavaScriptFromString(function);
         
-        
-        
-        
         context  = webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext; // Undocumented access to UIWebView's JSContext
-         context.setObject(ListViewClass() , forKeyedSubscript: "ListView" )
+        context.setObject(ListViewClass() , forKeyedSubscript: "ListView" )
         //self.context("ListView") = ListViewClass();
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool{
         
-       if (request.URL?.scheme! == "openurl")
-       {
+        if (request.URL?.scheme! == "openurl")
+        {
             var detailViewController  = self.storyboard?.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-        
-                
-                let query =  request.URL?.query
-                if let value = query?.componentsSeparatedByString("=")[1] {
-                    detailViewController.url = NSURL(string: value)
-                    self.navigationController?.pushViewController(detailViewController, animated: true)
+            
+            
+            let query =  request.URL?.query
+            if let value = query?.componentsSeparatedByString("=")[1] {
+                detailViewController.url = NSURL(string: value)
+                self.navigationController?.pushViewController(detailViewController, animated: true)
             }
-        
+            
         }
         return true;
     }
     
-
+    
 }
 
 extension ResourceListViewController : UISearchBarDelegate{
     
-     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         
-         var urlString = "http://readit.thoughtworks.com/resources" + searchBar.text
-         loadResources(urlString);
-        
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
     }
-    
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar){
-        println(searchBar.text)
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        
         var urlString = "http://readit.thoughtworks.com/resources"
         loadResources(urlString);
+        
     }
-
+    
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+        return true
+        
+    }
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        var urlString = "http://readit.thoughtworks.com/resources/" + searchText
+        println(urlString)
+        loadResources(urlString);
+        
+    }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    
 }
 
 
