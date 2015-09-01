@@ -73,7 +73,7 @@
         <!--Add Resource View Controller-->
         <scene sceneID="ESS-4d-Tlb">
             <objects>
-                <viewController id="ZPZ-iQ-am3" customClass="AddResourceViewController" customModule="HybridReadItIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddResourceView" id="ZPZ-iQ-am3" customClass="AddResourceViewController" customModule="HybridReadItIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OU6-pH-Lsz"/>
                         <viewControllerLayoutGuide type="bottom" id="7Y3-Ea-sbm"/>
@@ -82,12 +82,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xG0-78-dYH">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xG0-78-dYH">
                                 <rect key="frame" x="0.0" y="-8" width="600" height="608"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ZPZ-iQ-am3" id="lGu-rw-cu8"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xG0-78-dYH" firstAttribute="top" secondItem="VYN-MS-UOv" secondAttribute="topMargin" constant="-8" id="2dS-35-if4"/>
+                            <constraint firstItem="xG0-78-dYH" firstAttribute="leading" secondItem="VYN-MS-UOv" secondAttribute="leading" id="J18-5S-yMb"/>
+                            <constraint firstItem="xG0-78-dYH" firstAttribute="bottom" secondItem="7Y3-Ea-sbm" secondAttribute="top" id="Ut3-Zu-yAE"/>
+                            <constraint firstAttribute="trailing" secondItem="xG0-78-dYH" secondAttribute="trailing" id="e1z-2A-lmd"/>
+                            <constraint firstItem="xG0-78-dYH" firstAttribute="leading" secondItem="VYN-MS-UOv" secondAttribute="leading" id="l61-bs-G4X"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vhu-Zz-f3X">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="tqf-Lm-HJA">
